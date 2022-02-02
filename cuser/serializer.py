@@ -41,5 +41,6 @@ class EmailUniqueSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
+        #시리얼라이저 필드중에서 단 한개만 가져오겠다 이거지뭐
         fields = ('username',)
 

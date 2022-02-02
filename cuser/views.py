@@ -24,14 +24,19 @@ class LoginView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
 
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=False)
-        user = serializer.validated_data
-        token, _ = Token.objects.get_or_create(user=user)
-        return JsonResponse(
-            {
-                "token": token.key
-            }
-        )
+
+        if serializer.is_valid():
+            print(serializer.is_valid())
+
+            user = serializer.validated_data
+            token, _ = Token.objects.get_or_create(user=user)
+            return JsonResponse(
+                {
+                    "token": token.key
+                }
+            )
+        else:
+            return JsonResponse({"detail": "login error"}, status=status.HTTP_400_BAD_REQUEST)
 
 class EmailUniqueView(generics.GenericAPIView):
 
@@ -41,7 +46,7 @@ class EmailUniqueView(generics.GenericAPIView):
 
     def post(self, request, format=None):
         serializer = self.get_serializer(data=request.data, context={'request': request})
-
+        #시리얼라이저의 is_valid 기능을 활용하여 중복여부를 검사한다.
         if serializer.is_valid():
             return JsonResponse({'detail': 'You can use this email'}, status=status.HTTP_200_OK)
         else:
