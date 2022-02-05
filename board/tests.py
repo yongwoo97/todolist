@@ -1,3 +1,10 @@
 from django.test import TestCase
+from datetime import datetime
 
-# Create your tests here.
+
+str_time = '2022-02-05'
+
+obj = datetime.strptime(str_time, '%Y-%m-%d')
+
+print(type(obj))
+print(obj)
