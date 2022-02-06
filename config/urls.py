@@ -22,5 +22,5 @@ urlpatterns = [
     path('api/register/', regi_view.RegisterView.as_view()),
     path('api/login/', regi_view.LoginView.as_view()),
     path('api/uniquecheck/', regi_view.EmailUniqueView.as_view()),
-    path('api/<int:year>/<int:month>/', )
+    path('api/todolist/', include('board.urls')),
 ]
