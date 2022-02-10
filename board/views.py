@@ -21,6 +21,7 @@ class TodoListMonthView(generics.ListCreateAPIView):
         #여기 아래 코드에서 many=True는 다수의 쿼리셋을 시리얼라이즈 하겠다는 의미
         serializer = self.get_serializer(user_only_queryset, many=True)
         #response는 에러처리도 다해주나?
+        #
         return Response(serializer.data)
 
     def perform_create(self, serializer):
