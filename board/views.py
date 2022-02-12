@@ -32,7 +32,7 @@ class TodoListDayView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = todolist.objects.all()
     serializer_class = TodoSerializer
-
+    #이거보다 더 좋은 방법은 없을까?
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         year, month, day = kwargs['year'], kwargs['month'], kwargs['day']
