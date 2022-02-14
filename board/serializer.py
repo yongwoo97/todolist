@@ -5,4 +5,4 @@ class TodoSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source='username.username')
     class Meta:
         model = todolist
-        fields = ('date','username', 'title', 'repeat',)
+        fields = ('id', 'date', 'username', 'title', 'repeat',)
