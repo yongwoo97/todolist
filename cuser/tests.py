@@ -33,8 +33,8 @@ class TestRegister(APITestCase):
 
     def test_post_user_data(self):
         self.user_data = {
-            "username": "woo22661@naver.com",
-            "password": "Fuckchina2@"
+            "username": "test@naver.com",
+            "password": "test"
         }
         self.client.post(self.url, data=self.user_data)
 
@@ -44,8 +44,8 @@ class TestLogin(APITestCase):
         self.register_url = "http://127.0.0.1:8000/api/register/"
     def test_post_login(self):
         self.user_data = {
-            "username": "woo22661@naver.com",
-            "password": "Fuckchina2@"
+            "username": "test@naver.com",
+            "password": "test"
         }
         self.client.post(self.register_url, data=self.user_data)
         self.access_token = self.client.post(self.url,
