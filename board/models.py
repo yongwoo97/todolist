@@ -7,3 +7,4 @@ class todolist(models.Model):
     date = models.DateTimeField(null=False, blank=False)
     title = models.CharField(max_length=1000, null=False)
     repeat = models.IntegerField(default=0)
+    importance = models.IntegerField(default=0)
