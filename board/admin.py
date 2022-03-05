@@ -21,7 +21,7 @@ class UserAdmin(admin.ModelAdmin):
     #    return f"{len(account.nickname)} 글자"
 
     list_display = (
-        'id', 'username', 'date',  'title', 'repeat'
+        'id', 'username', 'date',  'title', 'repeat', 'importance',
     )
 
     list_display_links = (
