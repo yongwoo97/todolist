@@ -51,4 +51,4 @@ class EmailUniqueView(generics.GenericAPIView):
         else:
             detail = dict()
             detail['detail'] = serializer.errors['username'][0]
-            return JsonResponse(detail, status=status.HTTP_404_NOT_FOUND)
+            return JsonResponse(detail, status=status.HTTP_202_ACCEPTED)
