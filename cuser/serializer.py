@@ -1,9 +1,12 @@
 from .models import User
 from rest_framework import serializers
 from django.contrib.auth import authenticate
+from django.core.validators import MinLengthValidator
 from rest_framework.validators import UniqueValidator
 
 class UserSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(required=True, validators=[MinLengthValidator(8, '8자리 이상으로 설정해주세요')])
 
     class Meta:
         model = User
