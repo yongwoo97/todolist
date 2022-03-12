@@ -33,7 +33,7 @@ class TodoListMonthView(generics.ListCreateAPIView):
         for i in serializer.data:
             i['date'] = i['date'][:10]
 
-        return Response(serializer.data)
+        return Response(serializer.data[::-1])
 
     def create(self, request, *args, **kwargs):
         request.data['date'] += ' 00:00:00'
@@ -58,7 +58,7 @@ class TodoListDayView(generics.ListCreateAPIView):
 
         for i in serializer.data:
             i['date'] = i['date'][:10]
-        return Response(serializer.data)
+        return Response(serializer.data[::-1])
 
     def create(self, request, *args, **kwargs):
         request.data['date'] += ' 00:00:00'
