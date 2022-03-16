@@ -8,3 +8,4 @@ class todolist(models.Model):
     title = models.CharField(max_length=1000, null=True, blank=True)
     repeat = models.IntegerField(default=0)
     importance = models.IntegerField(default=0)
+    done = models.IntegerField(default=0)
