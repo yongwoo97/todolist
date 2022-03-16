@@ -4,7 +4,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import todolist
-from .serializer import TodoSerializer
+from .serializer import TodoSerializer, TodoOnlySerializer
 
 #데코레이터 보단 super를 사용하는게 더 좋겠지?
 def decorator(func):
@@ -76,3 +76,9 @@ class TodoListDetailView(generics.RetrieveUpdateDestroyAPIView):
     def update(self, request, *args, **kwargs):
         request.data['date'] += ' 00:00:00'
         return super().update(request, *args, **kwargs)
+
+class TodoListOnlyCheckView(generics.RetrieveUpdateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = todolist.objects.all()
+    serializer_class = TodoOnlySerializer
