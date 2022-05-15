@@ -70,5 +70,8 @@ class TodoListDetailView(generics.RetrieveUpdateDestroyAPIView):
         test = getattr(request.data, 'date', 0)
         if test:
             request.data['date'] += ' 00:00:00'
+        for i in ['date', 'title', 'importance', 'repeat', 'done']:
+            if i in request.data and not request.data[i]:
+                del request.data[i]
         kwargs['partial'] = True
         return super().update(request, *args, **kwargs)
