@@ -10,12 +10,3 @@ class TodoSerializer(serializers.ModelSerializer):
         model = todolist
         fields = ('id', 'username', 'date', 'title', 'repeat', 'importance', 'done')
 
-class TodoOnlySerializer(serializers.ModelSerializer):
-    username = serializers.ReadOnlyField(source='username.username')
-    date = serializers.ReadOnlyField()
-    title = serializers.ReadOnlyField()
-    repeat = serializers.ReadOnlyField()
-    importance = serializers.ReadOnlyField()
-    class Meta:
-        model = todolist
-        fields = ('id', 'username', 'date', 'title', 'repeat', 'importance', 'done')
