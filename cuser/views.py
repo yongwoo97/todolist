@@ -35,7 +35,7 @@ class LoginView(generics.GenericAPIView):
                 }
             )
         else:
-            return JsonResponse({"detail": "login error"}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({"message": "로그인 에러"}, status=status.HTTP_400_BAD_REQUEST)
 
 class EmailUniqueView(generics.GenericAPIView):
 
@@ -47,8 +47,8 @@ class EmailUniqueView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data, context={'request': request})
         #시리얼라이저의 is_valid 기능을 활용하여 중복여부를 검사한다.
         if serializer.is_valid():
-            return JsonResponse({'detail': 'You can use this email'}, status=status.HTTP_200_OK)
+            return JsonResponse({'message': '사용가능한 이메일입니다'}, status=status.HTTP_200_OK)
         else:
             detail = dict()
-            detail['detail'] = serializer.errors['username'][0]
-            return JsonResponse(detail, status=status.HTTP_202_ACCEPTED)
+            detail['message'] = '중복된 이메일 주소입니다'
+            return JsonResponse(detail, status=500)
