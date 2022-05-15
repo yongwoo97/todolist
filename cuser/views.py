@@ -35,7 +35,7 @@ class LoginView(generics.GenericAPIView):
                 }
             )
         else:
-            return JsonResponse({"message": "로그인 에러"}, status=status.HTTP_400_BAD_REQUEST)
+            return JsonResponse({"message": "로그인 에러"}, status=500)
 
 class EmailUniqueView(generics.GenericAPIView):
 
