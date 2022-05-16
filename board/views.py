@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from .models import todolist
 from .serializer import TodoSerializer
 
-
 class TodoListMonthView(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
